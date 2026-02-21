@@ -30,16 +30,42 @@ char *poti(char *a,int pt){
   if(pt == 0){
     return NULL;
   }
+  return NULL; 
+}
+void pref(char *k){
+  char *a = k;
+  for(int i = strlen(a)-1; i>=0; i--){
+    a[i] = a[i] >> 8;
+    printf("\n%s", a);
+  }
+  printf("%s\n", "λ");
+}
 
+void sufix(char *k){
+  char *a = k;
+  for(int i = 0; i< strlen(a); i++){
+    a[i] = a[i] <<8;
+    printf("\n%s", a);
+  }
 }
 
 
-
 int main(){
-   char *z = "cadenita"; 
+  char *z = "cadenita"; 
   char *k = "cadenita2";
-  char *p = concat(k,z);
-  printf("%d", strlen(""));
+  char *u = concat(k,"");
+  //printf("%s", u); 
+  //for(int i =0; k[i] != '\0'; i++){
+    //u[6] = u[6] >> 8;
+  //}
+
+  //printf("%s", u);
+  //char *p = concat(k,z);
+  //printf("%d", strlen(""));
   //printf("%d", valCad(z,z));
-  
+  pref(u);
+
+  printf("u: %s\n",u);
+  sufix(u);
+
 }
