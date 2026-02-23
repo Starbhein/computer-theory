@@ -54,6 +54,12 @@ void pref(char *k) {
   printf("%s\n", "λ");
 }
 
+void prefOpt(char *a) {
+  for (int i = 0; i < strlen(a); i++) {
+    printf("prefijo: %.*s \n", i, a);
+  }
+}
+
 char *potiOpt(char *a, int pt) {
   if (pt == 0)
     return "λ";
@@ -76,6 +82,26 @@ char *potiOpt(char *a, int pt) {
   return x;
 }
 
+void subseq(char *a) {
+  int l = strlen(a);
+  if (l > 12)
+    printf("No se aceptan cadenas mayores a una longitud de 12\n");
+  int mask = 1 << l;
+  printf("subsecuencias: { %s", "λ");
+  int pos = 0;
+  char buff[l];
+  for (int i = 1; i < mask; i++) {
+    pos = 0;
+    for (int j = 0; j < l; j++) {
+      if (i & (1 << j))
+        buff[pos++] = a[j];
+    }
+    buff[pos] = '\0';
+    printf(",%s", buff);
+  }
+  printf("}\n");
+}
+
 void sufix(char *k) {
   char *a = k;
   for (int i = 0; i < strlen(a); i++) {
@@ -86,8 +112,10 @@ void sufix(char *k) {
 
 int main() {
   char *z = "cadenita";
-  char *k = "cadenita2";
+  char *k = "abcd";
   char *u = concat(k, "");
+  prefOpt(u);
+  subseq(u);
   // printf("%s", u);
   // for(int i =0; k[i] != '\0'; i++){
   // u[6] = u[6] >> 8;
