@@ -6,7 +6,7 @@ void lon(char *a) {
     printf("%d", 1);
     return;
   }
-  printf("%d", strlen(a));
+  printf("%lu", strlen(a));
   return;
 }
 
@@ -55,9 +55,11 @@ void pref(char *k) {
 }
 
 void prefOpt(char *a) {
-  for (int i = 0; i < strlen(a); i++) {
-    printf("prefijo: %.*s \n", i, a);
+  printf("{ λ");
+  for (int i = 1; i <= strlen(a); i++) {
+    printf(",%.*s", i, a);
   }
+  printf("}\n");
 }
 
 char *potiOpt(char *a, int pt) {
@@ -113,7 +115,7 @@ void sufix(char *k) {
 int main() {
   char *z = "cadenita";
   char *k = "abcd";
-  char *u = concat(k, "");
+  char *u = concat(k, "z");
   prefOpt(u);
   subseq(u);
   // printf("%s", u);
